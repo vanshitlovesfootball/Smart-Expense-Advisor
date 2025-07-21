@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+ <title>Dashboard </title>
+<style>
+
+body{
+
+ background-color: #f0f8ff; 
+
+
+
+}
+
+.box{
+   
+   text-align:center;
+   
+   padding : 30px 25px;
+   border-radius: 20px;
+   width:400px;
+    background-color: #ffffff;
+    
+    margin: 40px auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);         
+    height:auto;
+    
+    }
+
+
+.welcome{
+     
+     font-size:28px;
+     font-weight:bold;
+
+}
+  
+  
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: #3399ff;           
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #007acc;
+}
+
+.logout {
+    background-color: red;
+    
+}
+
+.logout:hover {
+    background-color: darkred;
+}
+
+
+
+
+  
+.goal {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: #3399ff;           
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.goal:hover {
+    background-color: #007acc;
+}
+
+
+
+
+  
+.view {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: #3399ff;           
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.view:hover {
+    background-color: #007acc;
+}
+
+.expenses {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: #3399ff;           
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    
+}
+
+.expenses:hover {
+    background-color: #007acc;
+}
+
+
+.chart{
+               
+                 display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: #3399ff;           
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+
+
+}
+
+.chart:hover{
+
+background-color: #007acc;
+
+      }
+
+   
+   
+</style>
+
+</head>
+
+
+<body>
+
+<div class="box">
+
+<div th:if="${budgetStatus}">
+<p th:text="${budgetStatus}"></p>
+</div><br>
+
+<h2 class="welcome">Welcome , <span th:text="${session.loggedUser.name}"></span>!</h2>
+
+
+<div th:if="${msgee}" style="color: green; font-weight: bold; margin: 10px 0;">
+<span th:text="${msgee}"></span>
+</div>
+
+
+
+<div th:if="${msg}" style="color: green; font-weight: bold; margin: 10px 0;">
+<span th:text="${msg}"></span>
+</div>
+
+<div th:if="${successmsg}" style="color: green; font-weight: bold; margin: 10px 0;">
+<span th:text="${successmsg}"></span>
+</div>
+<p>💰 Monthly Budget: ₹<span th:text="${session.loggedUser.budget}"></span></p>
+
+<div th:if="${hasExpenses}">
+<p>💸 Total expenses: ₹<span th:text="${expenses}"></span></p>
+<p>🧮 Remaining balance:  ₹<span th:text="${remaining}"></span></p>
+
+
+</div>
+
+
+<div th:if="${!hasExpenses}">
+
+<p style="color:grey;">📝 No expenses till now!</p>
+<p>🧮 Remaining balance:  ₹<span th:text="${remaining}"></span></p>
+
+
+
+</div><br>
+
+
+<div>
+    <!-- Add Expense Button -->
+    <a href="/do/expenseadd" class="btn">➕ Add Expense</a>
+
+    <!-- Logout Button -->
+    <a href="/do/logout" class="btn logout">🚪 Logout</a>
+    
+    <a href="/do/goal" class="goal">➕ Add Future Goal</a>
+    
+    <a href="/do/viewGoals" class="view">View Goals</a>
+    
+    <a href="/do/viewExpenses" class="expenses">View Expenses</a>
+    
+    <a href="/do/viewChart" class="chart">View Chart</a>
+</div>
+
+
+</div>
+
+
+</body>
+
+  
+</html>  

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login - Smart Expense Advisor</title>
+    <style>
+    
+    body{
+      
+       background-color: #f0f8ff;
+       
+    
+    
+    
+    
+    }
+    
+    .box{
+   
+   text-align:center;
+   
+   padding : 30px 25px;
+   border-radius: 20px;
+   width:500px;
+    background-color: #ffffff;
+    
+    margin: 100px auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    
+    }
+    
+    
+    .box h2{
+    
+       margin-bottom : 20px;
+   color: #003366;
+   font-weight:bold;
+  }
+  
+    
+    
+    
+    
+    .box input{
+    
+      margin-bottom : 15px;
+   width : 90%;
+    
+    padding: 10px;
+       border-radius: 20px;
+       font-size:17px;
+       outline:none;
+       border:none;
+       border:0.5px solid grey;
+    
+    
+    
+    
+    
+    }
+    
+    .box input:focus{
+  
+           border-color: #3399ff;
+  box-shadow: 0 0 10px #3399ff66;
+  
+  
+  
+  
+  
+  }
+  
+    .button{
+  
+     width:200px !important;
+     
+      border-radius: 10px;
+      background-color: #3399ff;
+      color : white;
+      font-weight:bold;
+      border: none;
+      outline:none;
+      
+     
+  
+  
+  
+  }
+  
+    .button:hover{
+  
+       background-color: #007acc;
+  
+  }
+  
+  
+  .button:focus{
+       
+       border:none;
+       outline:none; 
+  }
+  
+  
+  .message{
+  
+         color : red;
+         font-weight:bold;
+  
+  
+  
+  }
+  
+  .input-error{
+  
+  
+   border: 2px solid red !important;
+    box-shadow: 0 0 5px red;
+  
+  
+  }
+  
+  .h{
+      margin-top:20px;
+  
+  
+  
+  }
+  
+  
+  .sign{
+        color: #3399ff;
+  
+  
+  
+  }
+  
+     .sign:hover{
+     
+          color:red;
+     
+     
+     
+     
+     
+     
+   }  
+     .msg{
+     
+      color:green;
+      font-weight:bold;
+     
+     
+     
+     
+     
+     }
+     
+     .forget{
+      
+      
+      text-decoration:underline;
+      color:Blue;
+     
+     
+     
+     
+     
+     
+     }
+     
+     .forget:hover{
+     
+     color:red;
+      text-decoration:underline;
+     
+     
+     
+     
+     
+     
+     
+     }
+    
+    
+    
+    </style>
+</head>
+<body>
+
+
+<div th:if="${successmsg}" style="
+    background-color: #d4edda;
+    color: #155724;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #c3e6cb;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+">
+    <span th:text="${successmsg}"></span>
+</div>
+
+
+
+
+<div th:if="${message}" style="
+    background-color: #d4edda;
+    color: #155724;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #c3e6cb;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+">
+    <span th:text="${message}"></span>
+</div>
+<div class="box">
+<h2>Login to your account</h2><br>
+<form th:action="@{/do/dekho}" method="post">
+
+<input type="text" name="email" placeholder="Email" th:value="${email}" th:classappend="${emailError} ? 'input-error' : ''" /><br>
+<span th:if="${emailError}" th:text="${emailError}" class="message"></span><br><br>
+
+<input type="password" name="password" placeholder="Password" th:value="${password}" th:classappend="${passwordError} ? 'input-error' : ''" /><br>
+<span th:if="${passwordError}" th:text="${passwordError}" class="message"></span><br><br><br>
+
+<p><a href="/do/forgot" class="forget">Forgot Password?</a></p><br><br>
+
+
+
+
+<input type="submit" value="Login" class="button"><br>
+
+
+
+
+
+
+</form>
+
+
+<p class="h">Don't have an account? <a href="/do/start" class="sign">Sign Up</a></p>
+
+
+
+
+
+
+
+</div>
+
+  
+
+
+</body>
+</html>

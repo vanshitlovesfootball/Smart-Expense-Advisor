@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>View future goals </title>
+    
+    <style>
+    
+        body{
+      
+       background-color: #f0f8ff;
+       
+    
+    
+    
+    
+    }
+    
+    .table{
+    
+    border-collapse:collapse;
+    
+   }
+    .box{
+    
+    
+    margin-left:40px;
+    margin-top:40px;
+    
+    }
+    
+    .table th , .table td{
+    
+    padding : 20px;
+    
+    
+    
+    
+    
+    }
+    
+    .hh{
+
+     margin-bottom : 20px;
+   color: #003366;
+   font-weight:bold;
+     
+  }
+    
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: red;           
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    
+}
+
+.btn:hover {
+    background-color: #007acc;
+}
+  
+  
+  .money{
+  
+   color :red;
+   margin-left:40px;
+  
+  
+  
+  }
+    
+    .bt{
+    
+          display: inline-block;
+          padding: 10px 20px;
+          margin: 20px;
+          border-radius: 10px;
+         background-color: #3399ff;       
+          color: white;
+          text-decoration: none;
+          font-weight: bold;
+    
+          
+    
+    }
+    
+    .bt:hover{
+    
+     background-color: #007acc;
+    
+    
+    }
+    
+    
+    
+    
+</style>
+    </head>
+    
+    
+    <body>
+    <div class="box">
+    <h2 class="hh">Future goals as listed below : </h2>
+    <table border="2" class="table">
+    
+    
+    <tr>
+    <th>Goal Description</th>	
+    <th>Goal amount(in ₹)</th>
+    <th>Created Date</th>
+    <th>Goal Id</th>
+    <th>Delete</th>
+    </tr>
+    
+    
+    
+    <tr th:each="goal : ${goals}">
+    
+    
+    
+    <td th:text="${goal.description}"></td>
+    <td th:text="${goal.amount}"></td>
+    <td th:text="${goal.date}"></td>
+    <td th:text="${goal.id}"></td>
+    
+    <td>
+    <a th:href="@{/do/delete/{id}(id=${goal.id})}" class="btn">Delete</a>
+    
+    </td>
+    
+    
+    
+    
+    
+    
+    
+    
+    </tr>
+    
+   
+    
+    
+    
+    </table><br>
+    
+   
+    
+    
+    </div><br>
+    
+    <h1 class="money">Total Goal amount : ₹<span th:text="${amt}"></span></h1><br>
+    
+    <div>
+    <a href="/do/dashboard" class="bt">Go Back to Dashboard</a>
+    </div>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    </body>
+    
+    
+    </html>

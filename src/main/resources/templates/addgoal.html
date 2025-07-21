@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Add Future Goal form</title>
+
+<style>
+
+ body{
+      
+       background-color: #f0f8ff;
+       
+    }
+    
+      .box{
+   
+   text-align:center;
+   
+   padding : 30px 25px;
+   border-radius: 20px;
+   width:400px;
+    background-color: #ffffff;
+    
+    margin: 100px auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    height:auto;
+    
+    
+    
+    }
+
+.budget{
+
+     margin-bottom : 20px;
+   color: #003366;
+   font-weight:bold;
+     
+  }
+
+ .box input{
+    
+      margin-bottom : 20px;
+   width : 90%;
+    
+    padding: 10px;
+       border-radius: 20px;
+       font-size:17px;
+       outline:none;
+       border:none;
+       border:0.5px solid grey;
+       color:gray;
+    
+   }
+        .box input:focus{
+  
+           border-color: #3399ff;
+  box-shadow: 0 0 10px #3399ff66;
+  
+  
+  
+  
+  
+  }
+
+
+   .button{
+  
+     width:200px !important;
+     
+      border-radius: 10px;
+      background-color: #3399ff;
+      color : white !important;
+      font-weight:bold;
+      border: none;
+      outline:none;
+      
+     
+  
+  
+  
+  }
+  
+    .button:hover{
+  
+       background-color: #007acc;
+  
+  }
+  
+  
+  .button:focus{
+       
+       border:none;
+       outline:none; 
+  }
+  
+  
+  .message{
+  
+         color : red;
+         font-weight:bold;
+  
+  
+  
+  }
+  
+  
+  .input-error {
+    border: 2px solid red !important;
+    box-shadow: 0 0 5px red;
+}
+  
+</style>
+    
+ </head>
+ 
+ <body>
+ 
+ <div class="box">
+ <h2 class="budget">Add Future Goal</h2><br>
+ 
+ <p th:if="${globalError}" th:text="${globalError}" class="message"></p>
+ 
+ 
+ <p th:if="${goalError}" th:text="${goalError}" class="message"></p><br>
+ <form th:action="@{/do/addnow}" method="post">
+ 
+ <input type="text" name="description" placeholder="Description" th:value="${desc}" th:classappend="${desError} ? 'input-error' : ''" /><br>
+ <span th:if="${desError}" th:text="${desError}" class="message"></span><br><br>
+ 
+ 
+ 
+ <input type="text" name="money" placeholder="Money(in ₹)" th:value="${money}" th:classappend="${moneyError} ? 'input-error' : ''" /><br>
+ <span th:if="${moneyError}" th:text="${moneyError}" class="message"></span><br><br>
+ 
+ 
+ 
+ <input type="date" name="date" placeholder="Date" th:value="${Date}" th:classappend="${dateError} ? 'input-error' : ''" /><br><br>
+ <span th:if="${dateError}" th:text="${dateError}" class="message"></span><br><br>
+ 
+ 
+ <input type="submit" value="Add" class="button"><br><br>
+ 
+ </form>
+ 
+</div>
+ 
+ </body>
+ 
+ 
+ </html>   

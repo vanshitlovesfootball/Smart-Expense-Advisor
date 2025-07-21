@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+ <title>Dashboard</title>
+<style>
+
+body{
+      
+       background-color: #f0f8ff;
+       
+    }
+    
+      .box{
+   
+   text-align:center;
+   
+   padding : 30px 25px;
+   border-radius: 20px;
+   width:400px;
+    background-color: #ffffff;
+    
+    margin: 100px auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    height:auto;
+    
+    
+    
+    }
+    
+.budget{
+
+     margin-bottom : 20px;
+   color: #003366;
+   font-weight:bold;
+      
+
+
+
+
+
+}
+
+
+ .box input{
+    
+      margin-bottom : 20px;
+   width : 90%;
+    
+    padding: 10px;
+       border-radius: 20px;
+       font-size:17px;
+       outline:none;
+       border:none;
+       border:0.5px solid grey;
+       color:gray;
+    
+    
+    
+    
+    
+    }
+    
+     .box input:focus{
+  
+           border-color: #3399ff;
+  box-shadow: 0 0 10px #3399ff66;
+  
+  
+  
+  
+  
+  }
+  
+   .button{
+  
+     width:200px !important;
+     
+      border-radius: 10px;
+      background-color: #3399ff;
+      color : white !important;
+      font-weight:bold;
+      border: none;
+      outline:none;
+      
+     
+  
+  
+  
+  }
+  
+    .button:hover{
+  
+       background-color: #007acc;
+  
+  }
+  
+  
+  .button:focus{
+       
+       border:none;
+       outline:none; 
+  }
+  
+  .category{
+  
+  
+     margin-bottom : 20px;
+   width : 95%;
+    
+    padding: 10px;
+       border-radius: 20px;
+       font-size:17px;
+       outline:none;
+       border:none;
+       border:0.5px solid grey;
+       color:gray;
+  
+  
+  
+  
+  
+  }
+  
+  .message{
+  
+         color : red;
+         font-weight:bold;
+  
+  
+  
+  }
+  
+  
+  .input-error {
+    border: 2px solid red !important;
+    box-shadow: 0 0 5px red;
+}
+  
+  
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+<div class="box">
+
+
+<h2 class="budget">Stay on Budget – Add an Expense</h2>
+
+<span th:if="${globalError}" th:text="${globalError}" class="message" style="display: block; margin-bottom: 20px;"></span>
+
+
+<form th:action="@{/do/addingexpense}" method="post">
+
+
+<input type="text" placeholder="Title" name="title" th:value="${title}" th:classappend="${titleError} ? 'input-error' : '' "><br>
+<span th:if="${titleError}" th:text="${titleError}" class="message"></span><br><br>
+
+
+<select name="category" class="category"   th:classappend="${categoryError} ? 'input-error' : '' ">
+
+<option value="" th:selected="${category == null or category == ''}">--Select the category</option>
+<option value="Food" th:selected="${category=='Food'}">Food</option>
+<option value="Travel" th:selected="${category=='Travel'}">Travel</option>
+<option value="Shopping" th:selected="${category=='Shopping'}">Shopping</option>
+
+<option value="Entertainment" th:selected="${category=='Entertainment'}">Entertainment</option>
+<option value="Health" th:selected="${category=='Health'}">Health</option>
+<option value="Rent" th:selected="${category=='Rent'}">Rent</option>
+
+
+
+
+
+</select><br>
+<span th:if="${categoryError}" th:text="${categoryError}" class="message"></span><br><br>
+
+
+<input type="text" name="money" placeholder="Amount(in ₹)"  th:value="${money}"    th:classappend="${moneyError} ? 'input-error' : '' "><br>
+<span th:if="${moneyError}" th:text="${moneyError}" class="message"></span><br><br>
+
+<input type="date" name="expensedate" placeholder="Date" class="expensedate" th:value="${date}"       th:classappend="${dateError} ? 'input-error' : '' " ><br>
+<span th:if="${dateError}" th:text="${dateError}" class="message"></span><br><br>
+
+<input type="submit" value="Add Expense" class="button"><br>
+
+
+
+
+
+
+
+
+
+
+
+
+</form>
+
+
+
+
+</div>
+
+
+
+
+
+
+</body>
+
+</html>

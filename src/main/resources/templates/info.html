@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Smart Expense Advisor Project</title>
+    
+    
+  
+
+
+<style>
+ 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+  .d{
+    
+    
+    background-color:lightblue;
+    height : 15vh;
+    width:100vw;
+    font-weight:bold;
+    color:white;
+    display : flex;
+    justify-content:center;
+    align-items:center;
+    font-size:70px;
+  
+  
+  
+  }
+  
+  .dd{
+  
+   height:auto;
+   background-color: #f7f7f7;
+   text-align:center;
+    padding: 40px 20px; 
+    
+   
+   
+  
+  
+  
+  
+  
+  
+  }
+  
+  .dd h3{
+  
+   color: #003366;
+   font-size: 30px;
+   
+  
+  
+  
+  }
+  
+  .dd p{
+  
+  color: #555;
+  font-size:20px;
+  
+  
+  
+  }
+  
+  
+  .box{
+   
+   text-align:center;
+   
+   padding : 30px 25px;
+   border-radius: 20px;
+   width:400px;
+    background-color: #ffffff;
+    
+    margin: 40px auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+   
+  background-image:url("money.png");
+  
+  
+  
+  
+  }
+  
+  .box h2{
+  
+  
+  margin-bottom : 20px;
+   color: #003366;
+  }
+  
+  .box input{
+  
+   margin-bottom : 15px;
+   width : 90%;
+    
+    padding: 10px;
+       border-radius: 20px;
+       font-size:15px;
+       outline:none;
+       border:1px solid grey;
+    
+   
+  
+   }
+   
+   
+   
+  .box input:focus{
+  
+           border-color: #3399ff;
+  box-shadow: 0 0 10px #3399ff66;
+  
+  
+  
+  
+  
+  }
+  
+  .button{
+  
+     width:100px !important;
+     
+      border-radius: 20px;
+      background-color: #3399ff;
+      color : white;
+      font-weight:bold;
+      
+     
+  
+  
+  
+  }
+  
+  .button:hover{
+  
+       background-color: #007acc;
+  
+  }
+  
+  .error{
+  
+   color: red;
+   font-weight:bold;
+   
+  
+  
+  
+  }
+  
+  .input-error {
+    border: 2px solid red !important;
+    box-shadow: 0 0 5px red;
+}
+
+
+.pp{
+
+       margin-top:20px;
+       
+    
+}  
+
+ .login{
+ 
+    color: #3399ff;
+ 
+        
+ 
+ 
+ 
+ 
+ }
+
+.login:hover{   
+
+
+      color:red;
+
+      
+ 
+
+    
+
+
+
+}
+
+
+
+
+
+
+</style>
+</head>
+<body>
+
+
+<div class="d">Smart Expense Advisor</div>
+
+<div class="dd">
+<h3>Take Control of your expenses today</h3>
+<p>Track your spending, set saving goals, and get smart insights to grow your money.</p>
+</div>
+
+<div class="box">
+<h2>Create Your Account</h2><br><br>
+<span th:if="${exists}" th:text="${exists}" class="error"></span><br><br>
+
+<form th:action="@{/do/process}" method="post">
+
+
+<input type="text" name="name" placeholder="Full Name" th:value="${name}" th:classappend="${nameError} ? 'input-error' : ''" />
+<span th:if="${nameError}" th:text="${nameError}" class="error"></span>
+<br><br>
+
+
+
+<input type="text" name="email" placeholder="Email" th:value="${email}" th:classappend="${emailError} ? 'input-error' : ''" />
+<span th:if="${emailError}" th:text="${emailError}" class="error"></span><br><br>
+
+
+
+
+<input type="password" name="password" placeholder="Password" th:value="${password}" th:classappend="${passwordError} ? 'input-error' : ''" />
+<span th:if="${passwordError}" th:text="${passwordError}" class="error"></span><br><br>
+
+
+
+<input type="text" name="contact" placeholder="Mobile Number" th:value="${contact}" th:classappend="${contactError} ? 'input-error' : ''" />
+<span th:if="${contactError}" th:text="${contactError}" class="error"></span><br><br>
+
+
+<input type="text" name="monthlymoney" placeholder="Monthly Budget" th:value="${monthlymoney}" th:classappend="${moneyError} ? 'input-error' : ''" />
+<span th:if="${moneyError}" th:text="${moneyError}" class="error" ></span><br><br>
+
+
+
+
+
+
+<input type="submit" value="Sign Up" class="button">
+
+
+
+</form>
+
+
+<p class="pp">Already registered? <a href="/do/log" class="login">Login now</a></p>
+
+
+
+
+</div>
+
+
+
+
+</body>
+</html>

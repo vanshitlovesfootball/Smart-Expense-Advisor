@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>View Expenses</title>
+    
+    <style>
+    
+     body{
+      
+       background-color: #f0f8ff;
+       
+    
+    
+    
+    
+    }
+       .table{
+    
+    border-collapse:collapse;
+    
+   }
+    .box{
+    
+    
+    margin-left:40px;
+    margin-top:40px;
+    
+    }
+    
+    .table th , .table td{
+    
+    padding : 20px;
+    
+    
+    
+    
+    
+    }
+    
+     .hh{
+
+     margin-bottom : 20px;
+   color: #003366;
+   font-weight:bold;
+     
+  }
+  
+  
+  .hehe{
+  
+     color : red;
+     margin-left:40px;
+  
+  
+  
+  
+  }
+  
+  
+  .dd{
+  
+   display: inline-block;
+          padding: 10px 20px;
+          margin: 20px;
+          border-radius: 10px;
+         background-color: #3399ff;       
+          color: white;
+          text-decoration: none;
+          font-weight: bold;
+    
+     
+     
+  
+  
+  
+  
+  
+  }
+  
+  
+  .dd:hover{
+  
+       background-color: #007acc;
+    
+  
+  
+  
+  
+  
+  }
+    
+    
+    </style>
+    
+    
+    
+    
+    </head>
+    
+    <body>
+    
+    
+    <div class="box">
+    
+    <h2 class="hh">Following expenses are listed below as : </h2><br>
+    
+    
+    <table border="2" class="table">
+    
+    
+    <tr>
+    <th>Title</th>
+    <th>Category</th>
+    <th>Amount</th>
+    <th>Expense date</th>
+    <th>Expense Id</th>
+    </tr>
+    
+    
+    <tr th:each="expense : ${expenses}">
+    
+    <td th:text="${expense.title}"></td>
+    <td th:text="${expense.category}"></td>
+
+    <td th:text="${expense.amount}"></td>
+    <td th:text="${expense.expenseDate}"></td>    
+    <td th:text="${expense.id}"></td>
+    
+    
+    
+    
+    
+    
+    </tr>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </table>
+    <br>
+    
+    
+    
+    
+    
+    
+    
+    </div>
+    <br>
+    
+    <h1 class="hehe">Total expenses amount : ₹<span th:text="${amt}"></span></h1><br>
+    
+    <div>
+    
+    <a href="/do/dashboard" class="dd">Go Back to Dashboard</a>
+    </div> 
+    
+    
+    
+    
+    </body>
+    
+    
+    
+    
+    </html>
